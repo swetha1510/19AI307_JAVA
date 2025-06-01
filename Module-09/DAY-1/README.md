@@ -1,62 +1,37 @@
-# Ex.No:9(B) BYTE ARRAY I/O
+# Ex.No:9(A)          DATA I/O STREAM
 ## AIM:
-To create a java program to write data using ByteArrayOutputStream.
-
-
+To write data to multiple files using ByteArrayOutputStream, demonstrating the ability to write the same data to multiple output streams.
 ## ALGORITHM :
-1.	The user enters a string (data), followed by two integers (start and length) specifying the starting position and number of characters to write.
-2.	The string data is converted to a byte array (array).
-3.	Using ByteArrayOutputStream, it writes length bytes from array, starting at start.
-4.	The written data is retrieved as a string (streamData) and displayed, showing the original input and the specific segment written to the stream.
-5.	Any exceptions are caught and handled, displaying stack trace information if an error occurs.
+
+1. Create two `FileOutputStream` objects (`out` and `out2`) to write to `F1.txt` and `F2.txt`.
+2. Create a `ByteArrayOutputStream` (`str`) to temporarily hold data in memory.
+3. Use `write()` to write a byte (in this case, the value `69`, corresponding to the letter 'E') to the `ByteArrayOutputStream`.
+4. Use `writeTo()` method of `ByteArrayOutputStream` to write the data from memory to both `FileOutputStream` objects (`out` and `out2`).
+5. Close the `ByteArrayOutputStream` once the data is written to the files, then print `"Success..."` to indicate the operation completed.
 
 ## PROGRAM:
  ```
 /*
-Program to implement a BYTE ARRAY I/O using Java
+Program to implement a DATA I/O STREAM using Java
 Developed by: SWETHA P
 RegisterNumber: 212222100053
+
+FileOutputStream out = new FileOutputStream("F1.txt");
+FileOutputStream out2 = new FileOutputStream("F2.txt");
+ByteArrayOutputStream str = new ByteArrayOutputStream();
+str.write(69);
+str.writeTo(out);
+str.writeTo(out2);
+str.close();
+System.out.println("Success...");
 */
 ```
 
-## Sourcecode.java:
-```
-import java.io.*;
-import java.util.*;
-public class Main {
-    public static void main(String[] args) {
-
-    
-     Scanner sc=new Scanner(System.in);
-     String data =sc.nextLine();
-    try {
-      // Creates an output stream
-      ByteArrayOutputStream out = new ByteArrayOutputStream();
-      byte[] array = data.getBytes();
-
-      // Writes data to the output stream
-      out.write(array,2,7);
-
-      // Retrieves data from the output stream in string format
-      String streamData = out.toString();
-      System.out.println("Original data: " + data);
-      System.out.println("Output stream: " + streamData);
-      out.close();
-    }
-
-    catch(Exception e) {
-      e.getStackTrace();
-    }
-  }
-}
-```
 
 ## OUTPUT:
 
-![image](https://github.com/user-attachments/assets/a47dcf53-2f26-4255-9179-79c3de038e47)
+![Screenshot 2025-05-10 063658](https://github.com/user-attachments/assets/500d48b9-8986-48cf-ba59-745105a93f15)
+
 
 ## RESULT:
-Thus, java program to write data using ByteArrayOutputStream was executed and verified successfully.
-
-
-
+Thus the Java Program To write data to multiple files using ByteArrayOutputStream, demonstrating the ability to write the same data to multiple output streams executed successfully.
